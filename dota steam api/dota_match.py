@@ -2,7 +2,8 @@ import requests
 from requests.exceptions import RequestException
 from contextlib import closing
 from bs4 import BeautifulSoup
-#from dotahero import heroids
+
+hero_id = open("./dotahero/dota2heroids.txt","r")
 
 match_id = 5482502874
 r= requests.get("https://api.opendota.com/api/matches/%s"%match_id)
@@ -24,3 +25,4 @@ for i in range(len(jstring["picks_bans"])):
         print("Picked Hero: ")
     print(jstring["picks_bans"][i]["hero_id"])
 
+hero_id.close()
